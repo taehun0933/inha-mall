@@ -1,5 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Protected from "./components/Protected";
+import { UserProvider } from "./context/UserContext";
 import AllProducts from "./pages/AllProducts";
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
@@ -11,10 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
+      <UserProvider>
         <NavBar />
         <Outlet />
-      </>
+      </UserProvider>
     ),
     errorElement: <ErrorPage />,
     children: [
@@ -28,7 +30,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/carts",
-        element: <MyCart />,
+        element: (
+          <Protected>
+            <MyCart />
+          </Protected>
+        ),
       },
       {
         path: "/products/:id",
@@ -36,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/products/new",
-        element: <NewProduct />,
+        element: (
+          <Protected checkAdmin>
+            <NewProduct />
+          </Protected>
+        ),
       },
     ],
   },

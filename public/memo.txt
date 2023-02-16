@@ -1,0 +1,9 @@
+<경로 보호> - 인가되지 않은 상태로 특정 경로 접속 시 차단
+1. products/new 접속 시, admin이 아니라면 차단
+2. carts 접속 시, 로그인한 유저가 아니라면 차단
+-> user 정보는 NavBar에 있기 때문에, 이를 사용하기 위해서는 기존 user 정보를 context화 해주어야 함. v
+
+<초기 값 읽어오기 문제> - context로 선언된 값을 읽어 오는데, 그 과정에서 읽어오기 전의 정보에 접근하는 문제(NewProduct의 주석 참고)
+-> 로컬스토리지를 이용해 보자.
+1. onAuthChanged 메소드에서 setUser를 콜백함수로 다루고 있는데, 그 과정에서 localstorage의 set/get item을 사용하면 될 것 같다.
+2. 

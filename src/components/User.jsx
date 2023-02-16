@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function User({ user: { displayName, photoURL } }) {
-  console.log(displayName, photoURL);
   return (
     <div className="flex items-center gap-2">
       <img
