@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Protected from "./components/Protected";
@@ -9,13 +10,17 @@ import MyCart from "./pages/MyCart";
 import NewProduct from "./pages/NewProduct";
 import ProductDetail from "./pages/ProductDetail";
 
+const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <UserProvider>
-        <NavBar />
-        <Outlet />
+        <QueryClientProvider client={queryClient}>
+          <NavBar />
+          <Outlet />
+        </QueryClientProvider>
       </UserProvider>
     ),
     errorElement: <ErrorPage />,

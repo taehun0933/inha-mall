@@ -6,8 +6,9 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get, set } from "firebase/database";
 import { setLocalStorageUser } from "./localStorageUser";
+import { v4 } from "uuid";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -48,5 +49,26 @@ async function includeAdminVal(user) {
       return { ...user, isAdmin };
     }
     return { ...user, isAdmin: false };
+  });
+}
+
+export function writeUserData({
+  imgUrl,
+  name,
+  price,
+  category,
+  description,
+  options,
+}) {
+  const db = getDatabase();
+  const uuid = v4();
+  return set(ref(db, "products/" + uuid), {
+    category,
+    description,
+    id: uuid,
+    image: imgUrl,
+    options: options.split(","),
+    price,
+    title: name,
   });
 }
