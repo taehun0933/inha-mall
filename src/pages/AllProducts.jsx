@@ -1,5 +1,6 @@
 import React from "react";
+import ProductsViewer from "../components/ProductsViewer";
 
 export default function AllProducts() {
-  return <div>All Products</div>;
+  return <ProductsViewer />;
 }

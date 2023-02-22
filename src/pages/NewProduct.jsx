@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { writeUserData } from "../api/firebase";
+import { writeProductData } from "../api/firebase";
 import uploadCloudinary from "../api/uploadCloudinary";
 import Button from "../components/ui/Button";
 import ProductInput from "../components/ui/ProductInput";
@@ -20,7 +20,7 @@ export default function NewProduct() {
     setIsUploading(true);
     e.preventDefault();
     uploadCloudinary(file).then((url) => {
-      writeUserData({ ...productData, imgUrl: url })
+      writeProductData({ ...productData, imgUrl: url })
         .then(() => {
           setSuccess(true);
           setTimeout(() => {

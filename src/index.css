@@ -10,10 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @apply flex flex-col items-center;
+  @apply pb-4;
 }
 
 #root {
-  @apply w-full max-w-screen-2xl;
+  @apply w-full max-w-screen-xl;
 }
 
 code {

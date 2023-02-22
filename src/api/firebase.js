@@ -52,7 +52,7 @@ async function includeAdminVal(user) {
   });
 }
 
-export function writeUserData({
+export function writeProductData({
   imgUrl,
   name,
   price,
@@ -70,5 +70,15 @@ export function writeUserData({
     options: options.split(","),
     price,
     title: name,
+  });
+}
+
+export async function getProductsData() {
+  return get(ref(getDatabase(), "products/")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      return [];
+    }
   });
 }
