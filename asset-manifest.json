@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/inha-mall/static/css/main.9957208d.css",
+    "main.js": "/inha-mall/static/js/main.91a06209.js",
+    "static/js/787.8bfa6160.chunk.js": "/inha-mall/static/js/787.8bfa6160.chunk.js",
+    "index.html": "/inha-mall/index.html",
+    "main.9957208d.css.map": "/inha-mall/static/css/main.9957208d.css.map",
+    "main.91a06209.js.map": "/inha-mall/static/js/main.91a06209.js.map",
+    "787.8bfa6160.chunk.js.map": "/inha-mall/static/js/787.8bfa6160.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9957208d.css",
+    "static/js/main.91a06209.js"
+  ]
+}
