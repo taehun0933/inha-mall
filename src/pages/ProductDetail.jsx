@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { addToCart } from "../api/firebase";
 import Button from "../components/ui/Button";
+import { useUserContext } from "../context/UserContext";
 
 export default function ProductDetail() {
-  const { category, image, price, title, description, options } =
+  const { uid } = useUserContext();
+  const { category, image, price, title, description, options, id } =
     useLocation().state;
   const [selected, setSelected] = useState(options && options[0]);
+  const [success, setSuccess] = useState();
   const handleChange = (e) => {
     setSelected(e.target.value);
   };
@@ -40,7 +44,20 @@ export default function ProductDetail() {
               ))}
           </select>
         </div>
-        <Button text={"장바구니에 추가"} />
+        {success && <p className="mb-2">✅장바구니에 추가되었습니다.</p>}
+        <Button
+          text={"장바구니에 추가"}
+          onClick={() => {
+            // user id, product 순으로 전달.
+            const product = { image, title, selected, price, id };
+            addToCart(uid, product).then(() => {
+              setSuccess(true);
+              setTimeout(() => {
+                setSuccess(null);
+              }, 3000);
+            });
+          }}
+        />
       </section>
     </div>
   );

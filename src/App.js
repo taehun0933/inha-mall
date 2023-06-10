@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import MyCart from "./pages/MyCart";
 import NewProduct from "./pages/NewProduct";
 import ProductDetail from "./pages/ProductDetail";
+import Community from "./pages/Community";
+import AddPost from "./pages/AddPost";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,18 @@ const router = createBrowserRouter([
         element: (
           <Protected checkAdmin>
             <NewProduct />
+          </Protected>
+        ),
+      },
+      {
+        path: "/community",
+        element: <Community />,
+      },
+      {
+        path: "/community/addPost",
+        element: (
+          <Protected>
+            <AddPost />
           </Protected>
         ),
       },
